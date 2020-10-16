@@ -1,5 +1,5 @@
 var express = require("express");
-const { fstat } = require("fs");
+const fs = require("fs");
 var path = require("path");
 var app = express();
 var PORT = 3000;
@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Routes
+// Routes 
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
@@ -23,16 +23,32 @@ app.get("/notes", function(req, res) {
 });
 
 app.get("/api/notes", function(req, res) {
-  res.json(jsonData);
+  var jsonData = fs.readFileSync(path.join(__dirname, "db.json/db.json"));
+  res.json(JSON.parse(jsonData));
 });
 
 app.post("/api/notes", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   var newNote = req.body;
+  fs.writeFile(db.json, JSON.stringify(newNote))
   jsonData.push(newNote);
 });
 
-fs.writeFile(db.json, JSON.stringify(jsonData))
+
+
+
+
+app.delete("/api/notes", function(req, res) {
+  const id = req.params.id;
+
+  for (var i = 0; i < jsonData.length; i++) { 
+    this.jasonData[i] =={}
+    }
+
+});
+
+
+
 
 // Starts the server to begin listening
 // =============================================================
