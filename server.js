@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 
@@ -23,29 +23,35 @@ app.get("/notes", function(req, res) {
 });
 
 app.get("/api/notes", function(req, res) {
-  var jsonData = fs.readFileSync(path.join(__dirname, "db.json/db.json"));
+  var jsonData = fs.readFileSync(path.join(__dirname, "data/db.json", "utf8"));
   res.json(JSON.parse(jsonData));
 });
+
 
 app.post("/api/notes", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   var newNote = req.body;
-  fs.writeFile(db.json, JSON.stringify(newNote))
+  for (i = 0; i <= jsonData.length; i++){
+    newNote.id = [i].toString;
+  }
   jsonData.push(newNote);
+  fs.writeFile(path.join(__dirname, "data/db.json", JSON.stringify(jsonData, null, 1)), function(err){
+    if (err) throw err;
+  });
+  return res.json(true);
 });
 
 
 
 
+// app.delete("/api/notes", function(req, res) {
+//   const id = req.params.id;
 
-app.delete("/api/notes", function(req, res) {
-  const id = req.params.id;
+//   for (var i = 0; i < jsonData.length; i++) { 
+//     this.jasonData[i] =={}
+//     }
 
-  for (var i = 0; i < jsonData.length; i++) { 
-    this.jasonData[i] =={}
-    }
-
-});
+// });
 
 
 
