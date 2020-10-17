@@ -3,6 +3,8 @@ const fs = require("fs");
 var path = require("path");
 var app = express();
 var PORT = 3000;
+const { v4: uuidv4 } = require("uuid");
+var jsonData = ("./data/db.json")
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -23,25 +25,23 @@ app.get("/notes", function(req, res) {
 });
 
 app.get("/api/notes", function(req, res) {
-  var jsonData = fs.readFileSync(path.join(__dirname, "data/db.json", "utf8"));
-  res.json(JSON.parse(jsonData));
+  // var jsonData = fs.readFileSync(path.join(__dirname, "./data/db.json"));
+  res.json(jsonData);
 });
 
 
 app.post("/api/notes", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   var newNote = req.body;
-  for (i = 0; i <= jsonData.length; i++){
-    newNote.id = [i].toString;
-  }
-  jsonData.push(newNote);
-  fs.writeFile(path.join(__dirname, "data/db.json", JSON.stringify(jsonData, null, 1)), function(err){
-    if (err) throw err;
+  newNote.id = uuidv4()
+  // jsonData.push(newNote);
+  fs.writeFile("./data/db.json", JSON.stringify(jsonData),  (err) => {
+    if (err){
+       throw err;
+    }
+  res.json()
   });
-  return res.json(true);
 });
-
-
 
 
 // app.delete("/api/notes", function(req, res) {

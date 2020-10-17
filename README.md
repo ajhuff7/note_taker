@@ -1,59 +1,69 @@
 # note_taker
 
-![rmg1](https://github.com/ajhuff7/portfolio-one/blob/master/assets/RMG1.JPG)
+![note]()
 
-This program written in node.js creates the framework for a readme.md file. It allows the user to input data and easily create readme files. 
+This program written in node.js creates a note taker. It allows the user to input data on the localhost and saves, returns notes. 
 
-![rmg2](https://github.com/ajhuff7/portfolio-one/blob/master/assets/RMG2.JPG)
-![rmg3](https://github.com/ajhuff7/portfolio-one/blob/master/assets/RMG3.JPG)
+![note2]()
+
 
 <br>
 
-------
+-----
+
+## Table of Contents
 
 * [Installation](#installation)
-
 * [Usage](#usage)
-
-* [Tests](#tests)
-
-* [Contributors](#contributing)
-
+* [Features](#features)
+* [Deployed_Link](#deployed_link)
 * [License](#license)
+* [Author](#author)
+* [Credits](#credits)
 
-* [Inquiries](#inquiries)
 
-------
+----
+
+
+
 ## Installation
 <br>
 To install dependencies, run the following command: 
-To run this file users need to run npm install and install inquire.
+To run this file users need to run npm install and install express.
 
 ------
 ## Usage
-<br>
-Easy to fork, please credit if applicable.
+
+This is note taker engine with interactive features. It utilizes routes and paths in node.js to manipulate the local host and save and return data.
 
 ------
-## Tests
-<br>
-To run tests, run the following command:
-npm run test
 
-------
-## Contributors
-<br>
-Easy to contribute, contributions are welcome.
+## Features
 
-------
+- 
+
+
+## Deployed Link
+
+* [See Live Site](https://ajhuff7.github.io/Code-Quiz/)
+
+---
+
 ## License
 <br>
 This project is licensed under:
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 
 -------
-## Inquiries...
-<br>
-For inquiries about the repo, please contact me at: ajhuff7@gmail.com. You can find more of my work at: ajhuff7.
 
-![picture](https://github.com/ajhuff7.png?size=80)
+## Author
+
+**AJ Huff** 
+
+- [Portfolio Site](#)
+- [Github](https://github.com/ajhuff7)
+- [LinkedIn](https://www.linkedin.com/in/aj-huff-7696b14b/)
+
+## Credits
+
+**Huge appreciation to the folks that got me "unstuck"!
