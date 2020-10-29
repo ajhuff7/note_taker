@@ -54,14 +54,10 @@ app.post("/api/notes", function(req, res) {
 });
 
 
-// app.delete("/api/notes", function(req, res) {
-//   const id = req.params.id;
-
-//   for (var i = 0; i < jsonData.length; i++) { 
-//     this.jasonData[i] =={}
-//     }
-
-// });
+app.delete("/api/notes", function(req, res) {
+  var newNote = req.body.id
+  newNote.id == [];
+});
 
 
 
