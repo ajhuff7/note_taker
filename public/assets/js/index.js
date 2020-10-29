@@ -104,31 +104,63 @@ var handleRenderSaveBtn = function() {
 };
 
 // Render's the list of note titles
-var renderNoteList = function(notes) {
-  $noteList.empty();
+// var renderNoteList = function(notes) {
+//   $noteList.empty();
 
-  var noteListItems = [];
+//   var noteListItems = [];
 
-  for (var i = 0; i < notes.length; i++) {
-    var note = notes[i];
+//   for (var i = 0; i < notes.length; i++) {
+//     var note = notes[i];
 
-    var $li = $("<li class='list-group-item'>").data(note);
-    var $span = $("<span>").text(note.title);
-    var $delBtn = $(
-      "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
-    );
+//     var $li = $("<li class='list-group-item'>").data(note);
+//     // var $span = $("<span>").text(note.title);
+//     // var $delBtn = $(
+//     //   "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+//     // );
 
-    $li.append($span, $delBtn);
-    noteListItems.push($li);
-  }
+//     // $li.append($span, $delBtn);
+//     console.log($li);
+//     noteListItems.push($li);
+//   }
 
-  $noteList.append(noteListItems);
-};
+//   // $noteList.append(noteListItems);
+//   // console.log($noteList);
+//   // console.log(notes)
+// };
+
+
+// Render's the list of note titles
+const renderNoteList = (notes) => {
+  notes = JSON.parse(notes)
+    $noteList.empty()
+    const noteListItems = []
+    // Returns jquery object for li with given text and delete button
+    // unless withDeleteButton argument is provided as false
+    const create$li = (text, withDeleteButton = true) => {
+        const $li = $("<li class='list-group-item'>")
+        const $span = $("<span>").text(text)
+        $li.append($span)
+        if (withDeleteButton) {
+            const $delBtn = $("<i class='fas fa-trash-alt float-right text-danger delete-note'>")
+            $li.append($delBtn)
+        }
+        return $li
+    }
+    if (notes.length === 0) {
+        noteListItems.push(create$li("No saved Notes", false))
+    }
+    notes.forEach((note) => {
+        const $li = create$li(note.title).data(note)
+        noteListItems.push($li)
+    })
+    $noteList.append(noteListItems)
+}
 
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
   return getNotes().then(function(data) {
     renderNoteList(data);
+    console.log(data)
   });
 };
 
